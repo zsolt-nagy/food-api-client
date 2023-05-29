@@ -11,3 +11,33 @@ body {
     background-color: black;
     color: whitesmoke;
 }
+
+.response-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.meal-item {
+    width: 40%;
+    margin: 4%;
+    border: 2px solid whitesmoke;
+    display: flex;
+    flex-direction: column;
+}
+
+.recipe-link {
+    background-color: lightskyblue;
+    color: black;
+    font-size: 1.5rem;
+    font-weight: bold; 
+    border: 2px solid deepskyblue;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    align-self: baseline;
+    margin: 0.75rem;
+    padding: 1rem;
+}
+
+
+
