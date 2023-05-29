@@ -2,7 +2,7 @@
 
 Hosting link: https://zsolt-nagy.github.io/food-api-client/
 
-# USer Stories 
+# User Stories 
 
 ```
 Don't forget proper user stories here...
