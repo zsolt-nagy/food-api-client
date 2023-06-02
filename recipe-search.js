@@ -9,32 +9,78 @@ function getImageHtml(meal) {
     return "";
 }
 
-function getInstructions(meal) {
+function getIngredientList(meal) {
+    let html = "<ul>";
+
+    for (let i = 1; i <= 20; ++i) {
+        let currentIngredient = meal["strIngredient" + i];
+        let currentMeasure = meal["strMeasure" + i];
+
+        if (typeof currentIngredient === "string" && currentIngredient.length > 0) {
+            html += `
+                <li>
+                    ${currentIngredient} (${currentMeasure})
+                </li>
+            `;
+        }
+    }
+
+    html += "</ul>";
+
+    return html;
+}
+
+function getIngredientsTab(meal) {
     return `
-        <div class="accordion" id="accordion${meal.idMeal}">
-            <div class="accordion-item">
-                <h2 class="accordion-header">
-                    <button
-                        class="accordion-button collapsed"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#collapseOne${meal.idMeal}"
-                        aria-expanded="false"
-                        aria-controls="collapseOne${meal.idMeal}"
-                    >
-                        Instructions
-                    </button>
-                </h2>
-                <div 
-                    id="collapseOne${meal.idMeal}" 
-                    class="accordion-collapse collapse" 
-                    data-bs-parent="#accordion${meal.idMeal}">
-                    <div class="accordion-body">
-                        ${meal.strInstructions}
-                    </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseTwo${meal.idMeal}"
+                    aria-expanded="false"
+                    aria-controls="collapseTwo${meal.idMeal}"
+                >
+                    Ingredients
+                </button>
+            </h2>
+            <div 
+                id="collapseTwo${meal.idMeal}" 
+                class="accordion-collapse collapse" 
+                data-bs-parent="#accordion${meal.idMeal}">
+                <div class="accordion-body">
+                    ${getIngredientList(meal)}
                 </div>
             </div>
-        </div> 
+        </div>
+    `;
+}
+
+function getInstructionsTab(meal) {
+    return `
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#collapseOne${meal.idMeal}"
+                    aria-expanded="false"
+                    aria-controls="collapseOne${meal.idMeal}"
+                >
+                    Instructions
+                </button>
+            </h2>
+            <div 
+                id="collapseOne${meal.idMeal}" 
+                class="accordion-collapse collapse" 
+                data-bs-parent="#accordion${meal.idMeal}">
+                <div class="accordion-body">
+                    ${meal.strInstructions}
+                </div>
+            </div>
+        </div>
     `;
 }
 
@@ -47,7 +93,10 @@ function displayRecipes(meals) {
         <section class="meal-item p-4">
             <h2>${meal.strMeal}</h2>
             ${getImageHtml(meal)}
-            ${getInstructions(meal)}
+            <div class="accordion" id="accordion${meal.idMeal}">
+                ${getInstructionsTab(meal)}
+                ${getIngredientsTab(meal)}
+            </div> 
             <a href="${meal.strSource}" class="align-self-baseline my-4 btn btn-info">Full recipe</a>
         </section>
         `;
