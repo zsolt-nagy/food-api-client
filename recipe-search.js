@@ -97,7 +97,12 @@ function displayRecipes(meals) {
                 ${getInstructionsTab(meal)}
                 ${getIngredientsTab(meal)}
             </div> 
-            <a href="${meal.strSource}" class="align-self-baseline my-4 btn btn-info">Full recipe</a>
+            <a 
+                href="${meal.strSource}" 
+                class="align-self-baseline my-4 btn btn-info" 
+                target="_blank">
+                    Full recipe
+            </a>
         </section>
         `;
     }
