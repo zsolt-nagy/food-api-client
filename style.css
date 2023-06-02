@@ -10,6 +10,7 @@ html {
 body {
     background-color: black;
     color: whitesmoke;
+    min-width: 425px;
 }
 
 .response-container {
@@ -26,6 +27,12 @@ body {
     flex-direction: column;
 }
 
+.recipe-form {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
 .recipe-link {
     background-color: lightskyblue;
     color: black;
@@ -39,5 +46,8 @@ body {
     padding: 1rem;
 }
 
-
-
+@media screen and (max-width: 768px) {
+    .meal-item {
+        width: 80%;
+    }
+}
