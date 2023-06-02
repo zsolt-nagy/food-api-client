@@ -109,7 +109,9 @@ function displayRecipes(meals) {
     responseContainer.innerHTML = html;
 }
 
-function displayErrorMessage() {}
+function displayErrorMessage() {
+    responseContainer.innerHTML = '<div class="error">Error fetching data.</div>';
+}
 
 function render(response) {
     const meals = response.meals;

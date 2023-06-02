@@ -13,6 +13,10 @@ body {
     min-width: 425px;
 }
 
+.error {
+    color: darkred;
+}
+
 .response-container {
     display: flex;
     justify-content: center;
